@@ -2,7 +2,7 @@
 
 Hi there :wave:. \
 This is my first repo :smile_cat:.\
-It was created simply for storing hometasks' solutions, but I believe it will end up being my first Pet Project or something.
+It was created simply for storing hometasks' solutions, but I believe it will end up being something.
 ## About me:
 - My name is **Bohdan**. :sunglasses:
 - I am a first-year student of the **Igor Sikorsky Kyiv Polytechnic Institute**. :nerd_face:
