@@ -13,4 +13,4 @@ To run code, first get it on your device. Then you can either open it via **IDE*
 - To run code via terminal you need [**Node.js**](https://www.geeksforgeeks.org/installation-of-node-js-on-windows/) installed on your device. Open a terminal in folder that contains file with code and then run in console this command: `Node [name].js`, where `[name]` is name of the file. 
 
 ### Contacts:
-:iphone:`Telegram: @dan0m1`  \ :email:`bohdan.shevchenko182@gmail.com`
+:iphone:`Telegram: @dan0m1`  :email:`bohdan.shevchenko182@gmail.com`
