@@ -1,0 +1,1 @@
+SELECT * FROM dvdrental.public.language WHERE language_id = 1 OR language.language_id = 5
