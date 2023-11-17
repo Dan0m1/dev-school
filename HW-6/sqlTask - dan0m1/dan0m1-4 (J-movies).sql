@@ -1,0 +1,1 @@
+SELECT * FROM dvdrental.public.film WHERE title LIKE 'J%'

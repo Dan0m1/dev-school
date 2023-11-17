@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Sector {
+  id           Int     @id @default(autoincrement())
+  supervisorId Int     @unique
+  cages        Cage[]
+  supervisor   Staff   @relation(fields: [supervisorId], references: [id])
+  location     String?
+}
+
+model Staff {
+  id           Int     @id @default(autoincrement())
+  job          Role    @default(SUPERVISOR)
+  firstName    String
+  lastName     String
+  contactEmail String  @unique
+  sector       Sector?
+  salary       Int     @default(16000)
+  chief        Staff?  @relation("ChiefSubordinate", fields: [chiefId], references: [id])
+  subordinate  Staff[] @relation("ChiefSubordinate")
+  chiefId      Int?
+}
+
+model Cage {
+  id           Int          @id @default(autoincrement())
+  sectorId     Int
+  animalFamily AnimalFamily
+  animals      Animal[]
+  Sector       Sector       @relation(fields: [sectorId], references: [id])
+
+  @@unique([id, animalFamily])
+}
+
+model Animal {
+  id          Int          @id @default(autoincrement())
+  name        String
+  Cage        Cage         @relation(fields: [cageId, family], references: [id, animalFamily])
+  cageId      Int
+  family      AnimalFamily
+  lastTimeFed DateTime     @default(now())
+}
+
+model VisitorsHistory {
+  date          String @id
+  visitorAmount Int
+  income        Int?
+}
+
+enum Role {
+  SUPERVISOR
+  GUARD
+  OVERWATCH
+  MANAGER
+}
+
+enum AnimalFamily {
+  WHITE_TIGER
+  SIBERIAN_TIGER
+  AFRICAN_LION
+  BLACK_LEOPARD
+  RETICULATED_GIRAFFE
+  HIMALAYAN_BEAR
+  FALLOW_DEAR
+  ALPACA
+  RACOON
+  GORILLA
+  CHIMPANZEE
+  MONKEY
+  MEERKAT
+}
