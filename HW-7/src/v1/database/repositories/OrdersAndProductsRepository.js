@@ -1,16 +1,23 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient()
+const {PrismaClient} = require ("@prisma/client");
+const prisma = new PrismaClient();
 async function findMany(orderId){
-    const products = await prisma.ordersAndProducts.findMany({
+    return prisma.ordersAndProducts.findMany({
         where: {
             order:{
                 id: orderId,
             }
         },
     })
-    return products;
+}
+async function deleteById(orderId){
+    await prisma.ordersAndProducts.deleteMany({
+        where:{
+            orderId: orderId,
+        }
+    })
 }
 
 module.exports = {
     findMany,
+    deleteById,
 }

@@ -18,6 +18,18 @@ async function updateOrCreateTotalCost(orderId, deliveryCost){
     }
 }
 
+async function deleteById(orderId){
+    try{
+        await OrdersAndProducts.deleteById(orderId);
+        const deletedOrder = await Order.deleteById(orderId);
+        return deletedOrder;
+    }
+    catch(error){
+        throw error;
+    }
+}
+
 module.exports = {
     updateOrCreateTotalCost,
+    deleteById,
 }

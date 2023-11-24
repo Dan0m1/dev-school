@@ -2,7 +2,7 @@ const customerService = require('../services/customerService');
 
 async function getCustomerOrders(request, response) {
     try {
-        const customerOrders = await customerService.getCustomerOrders(1);
+        const customerOrders = await customerService.getCustomerOrders(+request.params.customerId);
         response.status(200).send({
             ...customerOrders,
         });

@@ -1,6 +1,5 @@
-const { PrismaClient } = require('@prisma/client');
+const {PrismaClient} = require ("@prisma/client");
 const prisma = new PrismaClient();
-
 async function findById(productId) {
     const product = await prisma.product.findFirst({
         where:{
@@ -19,7 +18,14 @@ async function findById(productId) {
     }
     else return product;
 }
+async function createOne(newProduct){
+    const createdProduct = await prisma.product.create({
+        data: newProduct,
+    })
+    return createdProduct;
+}
 
 module.exports = {
     findById,
+    createOne,
 }
