@@ -1,13 +1,19 @@
 const employeeService = require('../services/employeeService');
 
 async function updateById(request, response){
+    const {body} = request;
+    const EmployeeUpdate = {}
+    if(body.firstName) EmployeeUpdate.firstName = body.firstName;
+    if(body.lastName) EmployeeUpdate.lastName = body.lastName;
+    if(body.middleName) EmployeeUpdate.middleName = body.middleName;
+    if(body.position) EmployeeUpdate.position = body.position;
     try {
-        let updatedEmployee;
+        let EmployeeResponse;
         if(request.body) {
-            updatedEmployee = await employeeService.updateById(+request.params.employeeId, request.body);
+            EmployeeResponse = await employeeService.updateById(+request.params.employeeId, EmployeeUpdate);
         }
         response.status(200).send({
-            ...updatedEmployee,
+            ...EmployeeResponse,
         });
     }
     catch (error){

@@ -18,11 +18,11 @@ async function findById(productId) {
     }
     else return product;
 }
-async function createOne(newProduct){
-    const createdProduct = await prisma.product.create({
-        data: newProduct,
+async function createOne(ProductCreate){
+    const ProductResponse = await prisma.product.create({
+        data: ProductCreate,
     })
-    return createdProduct;
+    return ProductResponse;
 }
 
 module.exports = {

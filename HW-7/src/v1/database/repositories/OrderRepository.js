@@ -13,12 +13,12 @@ async function updateOrCreateOrderTotalCost(orderId, totalCost){
 
 async function deleteById(orderId){
     try {
-        const deletedOrder = await prisma.order.delete({
+        const OrderResponse = await prisma.order.delete({
             where: {
                 id: orderId,
             }
         })
-        return deletedOrder;
+        return OrderResponse;
     }
     catch(error){
         error.message = "Order with such id not found";

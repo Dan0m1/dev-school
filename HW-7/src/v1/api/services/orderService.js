@@ -21,8 +21,8 @@ async function updateOrCreateTotalCost(orderId, deliveryCost){
 async function deleteById(orderId){
     try{
         await OrdersAndProducts.deleteById(orderId);
-        const deletedOrder = await Order.deleteById(orderId);
-        return deletedOrder;
+        const OrderResponse = await Order.deleteById(orderId);
+        return OrderResponse;
     }
     catch(error){
         throw error;

@@ -2,10 +2,10 @@ const orderService = require('../services/orderService')
 
 async function deleteById(request, response){
     try{
-        const deletedOrder = await orderService.deleteById(+request.params.orderId);
+        const OrderResponse = await orderService.deleteById(+request.params.orderId);
         response.status(200).send(
             {
-                ...deletedOrder,
+                ...OrderResponse,
             }
         )
     }

@@ -16,16 +16,16 @@ async function createOne(request, response){
             },
         })
     }
-    const newProduct = {
+    const ProductCreate = {
         name: body.name,
         category: body.category,
         amount: +body.amount,
         price: +body.price,
     }
     try{
-        const createdProduct = await productService.createOne(newProduct);
+        const ProductResponse = await productService.createOne(ProductCreate);
         response.status(201).send({
-            ...createdProduct,
+            ...ProductResponse,
         })
     }
     catch (error){

@@ -2,14 +2,14 @@ const Customer = require('../../database/repositories/CustomerRepository');
 const orderService = require('../services/orderService')
 async function getCustomerOrders(customerId) {
     try {
-        let customerOrders = await Customer.findOrdersById(customerId);
+        let CustomerOrders = await Customer.findOrdersById(customerId);
         let total = 0;
-        for (const order of customerOrders.orders){
+        for (const order of CustomerOrders.orders){
             total += await orderService.updateOrCreateTotalCost(order.id, order.deliveryCost);
         }
-        customerOrders = await Customer.findOrdersById(customerId);
+        CustomerOrders = await Customer.findOrdersById(customerId);
         return {
-            ...customerOrders,
+            ...CustomerOrders,
             totalCost: total,
         }
     }
